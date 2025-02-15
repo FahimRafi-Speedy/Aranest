@@ -29,7 +29,10 @@ const Header = () => {
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setDropdownOpen(false);
       }
     };
@@ -115,35 +118,42 @@ const Header = () => {
                 {/* Dropdown Menu Items */}
                 <ul className="py-2 text-sm text-gray-700">
                   <li>
-                    <Link href="#" className="flex items-center px-4 py-2 hover:bg-gray-100">
+                    <Link
+                      href="/profileSetting"
+                      className="flex items-center px-4 py-2 hover:bg-gray-100"
+                    >
                       <FiUser className="mr-2" /> Profile
                     </Link>
                   </li>
                   <li>
-                    <Link href="/AgentList" className="flex items-center px-4 py-2 hover:bg-gray-100">
+                    <Link
+                      href="/myAgent"
+                      className="flex items-center px-4 py-2 hover:bg-gray-100"
+                    >
                       <MdRealEstateAgent className="mr-2" /> My Agents
                     </Link>
                   </li>
                   <li>
-                    <Link href="/PropertyList" className="flex items-center px-4 py-2 hover:bg-gray-100">
+                    <Link
+                      href="/myProperty"
+                      className="flex items-center px-4 py-2 hover:bg-gray-100"
+                    >
                       <FiHome className="mr-2" /> My Properties
                     </Link>
                   </li>
-                  <li>
-                    <button
-                      onClick={() => router.push("/ProfileSetting")}
+                  {/* <li>
+                    <Link href="/profileSetting"
                       className="w-full text-left flex items-center px-4 py-2 hover:bg-gray-100"
                     >
                       <FiSettings className="mr-2" /> Profile Settings
-                    </button>
-                  </li>
+                    </Link>
+                  </li> */}
                   <li>
-                    <button
-                      onClick={handleLogout}
+                    <Link href="/"
                       className="w-full text-left flex items-center px-4 py-2 text-red-500 hover:bg-gray-100"
                     >
                       <FiLogOut className="mr-2" /> Logout
-                    </button>
+                    </Link>
                   </li>
                 </ul>
               </div>

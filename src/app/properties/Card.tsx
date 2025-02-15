@@ -7,6 +7,7 @@ import { FaHeart, FaRegHeart, FaPhoneAlt, FaComments } from 'react-icons/fa';
 import { SiWhatsapp } from 'react-icons/si';
 import { useRouter } from 'next/navigation';  // Import useRouter from next/navigation for the app directory
 import "./Body.css";
+import Link from 'next/link';
 
 const Card = () => {
   // Property details stored in variables (hardcoded for now)
@@ -151,7 +152,7 @@ const Card = () => {
         {/* Property Details */}
         <h2
           className="text-xl font-bold cursor-pointer"
-          onClick={() => router.push('/PropertyDetails')}  // Add onClick to redirect
+          onClick={() => router.push('/propertyDetails')}  // Add onClick to redirect
         >
           {property.title}
         </h2>
@@ -192,9 +193,9 @@ const Card = () => {
             </button>
 
             {/* Chat Button with Blue Background and Text */}
-            <button className="flex items-center justify-center bg-blue-500 text-white text-sm font-semibold px-4 py-2 rounded-md">
+            <Link href="/chat" className="flex items-center justify-center bg-blue-500 text-white text-sm font-semibold px-4 py-2 rounded-md">
               Chat
-            </button>
+            </Link>
 
             {/* WhatsApp Button with Green Background and Rounded Edges */}
             <button className="flex items-center justify-center bg-green-500 text-white w-10 h-10 rounded-md">

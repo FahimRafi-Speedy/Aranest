@@ -1,7 +1,7 @@
 "use client";
 
-import {useState} from "react";
-import {AiFillEye, AiFillEyeInvisible} from "react-icons/ai";
+import { useState } from "react";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import Link from "next/link";
 import Image from "next/image";
 import "./styles.css"; // Link to local styles.css
@@ -18,8 +18,7 @@ export default function Register() {
         password && confirmPassword && password === confirmPassword;
 
     return (
-        // <div className="flex flex-col md:flex-row bg-white shadow-lg rounded-xl overflow-hidden min-h-screen">
-        <div className="flex flex-col md:flex-row bg-white shadow-lg rounded-xl overflow-hidden min-h-screen ">
+        <div className="flex flex-col md:flex-row bg-white shadow-lg rounded-xl overflow-hidden min-h-screen">
             {/* Left Image Section */}
             <div className="hidden md:block md:w-96 relative">
                 <Image
@@ -47,10 +46,10 @@ export default function Register() {
                     className="absolute inset-0 bg-gradient-to-b from-transparent to-[rgba(0,0,0,0.5)] flex items-end p-4 rounded-bl-xl rounded-tl-xl">
                     <p className="text-white text-lg font-semibold">
                         Register Today and Unlock Exclusive Listings
-                        <br/>
+                        <br />
                         <span className="text-m font-normal">
-              Get early access to new properties and personalized alerts.
-            </span>
+                            Get early access to new properties and personalized alerts.
+                        </span>
                     </p>
                 </div>
             </div>
@@ -137,12 +136,12 @@ export default function Register() {
                         className="absolute right-3 mt-[10px] cursor-pointer"
                         onClick={() => setShowPassword(!showPassword)}
                     >
-            {showPassword ? (
-                <AiFillEye size={20}/>
-            ) : (
-                <AiFillEyeInvisible size={20}/>
-            )}
-          </span>
+                        {showPassword ? (
+                            <AiFillEye size={20} />
+                        ) : (
+                            <AiFillEyeInvisible size={20} />
+                        )}
+                    </span>
                 </div>
 
                 {/* Confirm Password Field */}
@@ -161,12 +160,12 @@ export default function Register() {
                         className="absolute right-3 mt-[10px] cursor-pointer"
                         onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                     >
-            {showConfirmPassword ? (
-                <AiFillEye size={20}/>
-            ) : (
-                <AiFillEyeInvisible size={20}/>
-            )}
-          </span>
+                        {showConfirmPassword ? (
+                            <AiFillEye size={20} />
+                        ) : (
+                            <AiFillEyeInvisible size={20} />
+                        )}
+                    </span>
                 </div>
 
                 {/* Real-time password match message */}
@@ -191,7 +190,7 @@ export default function Register() {
                 {/* Login Link */}
                 <p className="mt-6 text-center text-sm">
                     Already Have an Account?{" "}
-                    <Link href="/Login" className="text-blue-500 hover:text-blue-600">
+                    <Link href="/login" className="text-blue-500 hover:text-blue-600">
                         Login Here
                     </Link>
                     .

@@ -1,7 +1,13 @@
 import React from 'react';
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
-import PropertyList from "@/app/PropertyList/PropertyList";
+import PropertyList from "@/app/myProperty/PropertyList";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "My Property | Aranest",
+  description: "See your property list",
+};
 
 const properties = [
     {
@@ -52,7 +58,7 @@ const PropertyListPage = () => {
             <Header/>
 
             <div className="container mx-auto">
-                <h1 className="text-4xl font-bold text-center text-black mb-5">Property List</h1>
+                <h1 className="text-4xl font-bold text-center text-black mb-5">My Property</h1>
                 <p className="text-center">Here is a list of properties</p>
 
                 {/* Property List */}

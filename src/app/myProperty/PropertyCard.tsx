@@ -6,6 +6,7 @@ import {FaHeart, FaPhoneAlt, FaRegHeart} from 'react-icons/fa';
 import {useRouter} from "next/navigation";
 import {MdChevronLeft, MdChevronRight} from "react-icons/md";
 import {SiWhatsapp} from "react-icons/si";
+import Link from 'next/link';
 
 
 interface PropertyCardProps {
@@ -182,7 +183,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({property}) => {
                 {/* Property Details */}
                 <h2
                     className="text-xl font-bold cursor-pointer"
-                    onClick={() => router.push('/PropertyDetails')}  // Add onClick to redirect
+                    onClick={() => router.push('/propertyDetails')}  // Add onClick to redirect
                 >
                     {property.title}
                 </h2>
@@ -225,10 +226,10 @@ const PropertyCard: React.FC<PropertyCardProps> = ({property}) => {
                         </button>
 
                         {/* Chat Button with Blue Background and Text */}
-                        <button
+                        <Link href="/chat"
                             className="flex items-center justify-center bg-blue-500 text-white text-sm font-semibold px-4 py-2 rounded-md">
                             Chat
-                        </button>
+                        </Link>
 
                         {/* WhatsApp Button with Green Background and Rounded Edges */}
                         <button

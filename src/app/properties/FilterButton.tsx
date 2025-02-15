@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect, useRef } from 'react';
 import { FiFilter, FiX } from 'react-icons/fi';
 import './FilterButton.css'; // Ensure you have custom styles here

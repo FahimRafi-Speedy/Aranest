@@ -1,4 +1,5 @@
 // app/properties/Agent.tsx
+import Link from "next/link";
 import { FaPhoneAlt } from "react-icons/fa";
 import { SiWhatsapp } from "react-icons/si";
 
@@ -15,9 +16,9 @@ const Agent = () => {
         <button className="flex items-center justify-center w-10 h-10 bg-blue-500 text-white rounded-full">
           <FaPhoneAlt />
         </button>
-        <button className="flex items-center justify-center bg-blue-500 text-white text-sm font-semibold px-4 py-2 rounded-md">
+        <Link href="/chat" className="flex items-center justify-center bg-blue-500 text-white text-sm font-semibold px-4 py-2 rounded-md">
           Chat
-        </button>
+        </Link>
         <button className="flex items-center justify-center bg-green-500 text-white w-10 h-10 rounded-md">
           <SiWhatsapp className="text-xl" />
         </button>

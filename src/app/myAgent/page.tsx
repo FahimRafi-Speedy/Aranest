@@ -1,8 +1,12 @@
-"use client";
-
-import AgentList from "@/app/AgentList/AgentList";
+import AgentList from "@/app/myAgent/AgentList";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "My Agent | Aranest",
+    description: "Your Trusted Real Estate",
+  };
 
 const agents = [
     {

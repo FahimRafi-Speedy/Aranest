@@ -1,5 +1,5 @@
 import React from 'react';
-import PropertyCard from "@/app/PropertyList/PropertyCard";
+import PropertyCard from "@/app/myProperty/PropertyCard";
 
 interface Property {
     id: number;

@@ -3,7 +3,7 @@ import FindProperty from "../components/Body/FindProperty";
 import Footer from "../components/Footer/Footer";
 import "./globals.css";
 import CardContainer from "../components/Cards/CardContainer";
-import Script from "next/script";
+
 
 export default function Home() {
   return (

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Roboto } from "next/font/google";
-import GoogleMapsLoader from "../components/GoogleMapsLoader";
+// import GoogleMapsLoader from "../components/GoogleMapsLoader";
 import React from "react";
 
 const roboto = Roboto({
@@ -30,7 +30,7 @@ export default function RootLayout({
         />
       </head>
       <body className={roboto.className}>
-        <GoogleMapsLoader />
+        {/* <GoogleMapsLoader /> */}
         {children}
       </body>
     </html>

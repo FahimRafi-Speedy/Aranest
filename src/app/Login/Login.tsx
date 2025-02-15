@@ -82,7 +82,7 @@ export default function Login() {
 
         {/* Forgot Password Link */}
         <div className="text-right mb-2">
-          <Link href="/Login?forgot" className="text-blue-500 text-sm">
+          <Link href="/login?forgot" className="text-blue-500 text-sm">
             Forgot password?
           </Link>
         </div>
@@ -95,7 +95,7 @@ export default function Login() {
         {/* Register Link */}
         <p className="mt-6 text-center text-sm">
           Don't Have an Account?{" "}
-          <Link href="/Login?register" className="text-blue-500 hover:text-blue-600">
+          <Link href="/register" className="text-blue-500 hover:text-blue-600">
             Register Here
           </Link>
           .

@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, ChangeEvent } from "react";
 import "./formStyles.css"; // Link to the custom CSS file
 import LocationInput from "./LocationInput"; // Import the LocationInput component

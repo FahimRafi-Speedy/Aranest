@@ -8,6 +8,7 @@ import SearchButton from "./SearchButton";
 import OptionSelector from "./OptionSelector";
 import { Autocomplete, GoogleMap, Marker } from "@react-google-maps/api";
 import Modal from "react-modal";
+import { useRouter } from "next/navigation";
 import "./Body.css";
 
 const FindProperty: React.FC = () => {
@@ -19,6 +20,7 @@ const FindProperty: React.FC = () => {
   const [markerPosition, setMarkerPosition] = useState<google.maps.LatLng | null>(null);
   const [isMapLoaded, setIsMapLoaded] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const appElement = document.getElementById("__next");
@@ -130,29 +132,42 @@ const FindProperty: React.FC = () => {
     setIsMapOpen(!isMapOpen);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const formData = {
-      address: searchText,
-      latitude: latitude,
-      longitude: longitude,
-    };
+    if (latitude && longitude) {
+      try {
+        // Save latitude and longitude to session storage
+        sessionStorage.setItem("address", searchText);
+        sessionStorage.setItem("latitude", latitude.toString());
+        sessionStorage.setItem("longitude", longitude.toString());
 
-    fetch("/api/submit-location", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-      })
-      .catch((error) => {
+        // Send a POST request to the backend (optional)
+        const response = await fetch("/api/submit-location", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            latitude,
+            longitude,
+          }),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          console.log("Success:", data);
+
+          // Redirect to the properties page without latitude and longitude in the URL
+          router.push("/properties");
+        } else {
+          console.error("Error:", response.statusText);
+          router.push("/properties");
+        }
+      } catch (error) {
         console.error("Error:", error);
-      });
+      }
+    }
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {

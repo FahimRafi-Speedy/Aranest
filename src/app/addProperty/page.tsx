@@ -1,8 +1,13 @@
-"use client";
-
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Form from "./Form";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Add Property | Aranest",
+    description: "Your Trusted Real Estate",
+  };
+
 
 export default function AddListingPage() {
   return (

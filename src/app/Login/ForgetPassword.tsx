@@ -98,7 +98,7 @@ export default function ForgetPassword() {
 
             <p className="mt-8 text-center text-sm">
                 Remembered your password?{" "}
-                <Link href="/Login" className="text-blue-500">
+                <Link href="/login" className="text-blue-500">
                     Login Here
                 </Link>
                 .
