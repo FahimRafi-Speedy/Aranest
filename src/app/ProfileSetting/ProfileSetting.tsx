@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { FaPhone, FaEnvelope, FaSkype, FaFacebook, FaTwitter, FaLinkedin, FaPinterest, FaGlobe, FaEye, FaEyeSlash, FaCheck, FaTimes } from "react-icons/fa";
+import { FaPhone, FaEnvelope, FaSkype, FaFacebook, FaTwitter, FaLinkedin, FaPinterest, FaGlobe, FaEye, FaEyeSlash, FaCheck, FaTimes, FaUser } from "react-icons/fa";
 import "./styles.css"; // Custom CSS import
 
 const ProfileSetting = () => {
@@ -27,6 +27,8 @@ const ProfileSetting = () => {
     confirmNewPassword: false,
   });
 
+  const [profilePhoto, setProfilePhoto] = useState<string | null>(null); // State for profile photo
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
@@ -46,6 +48,17 @@ const ProfileSetting = () => {
   const isPasswordMatch = formData.newPassword === formData.confirmNewPassword;
   const isPasswordValid = validatePassword(formData.newPassword);
 
+  const handlePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setProfilePhoto(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -60,7 +73,7 @@ const ProfileSetting = () => {
     }
 
     // Simulate form submission
-    console.log("Profile Updated:", formData);
+    console.log("Profile Updated:", formData, { profilePhoto });
     alert("Profile updated successfully!");
   };
 
@@ -91,6 +104,37 @@ const ProfileSetting = () => {
           className="formInput"
           placeholder="Enter your title"
         />
+      </div>
+
+      {/* Profile Photo Upload */}
+      <div>
+        <label className="formHeading">Profile Photo</label>
+        <div className="flex items-center space-x-4">
+          <div className="w-28 h-28 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center">
+            {profilePhoto ? (
+              <img
+                src={profilePhoto}
+                alt="Profile Preview"
+                className="w-full h-full object-cover rounded-lg"
+              />
+            ) : (
+              <FaUser className="text-gray-400 size-8" />
+            )}
+          </div>
+          <input
+            type="file"
+            id="profilePhoto"
+            accept="image/*"
+            onChange={handlePhotoUpload}
+            className="hidden"
+          />
+          <label
+            htmlFor="profilePhoto"
+            className="submitButton cursor-pointer text-center"
+          >
+            Upload Photo
+          </label>
+        </div>
       </div>
 
       {/* Contact Details */}

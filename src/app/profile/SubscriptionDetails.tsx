@@ -1,8 +1,4 @@
-"use client";
-
-import { useState } from "react";
 import { FaCheckCircle } from "react-icons/fa";
-import "@/app/contact/style.css";
 
 type Plan = {
   id: number;
@@ -14,8 +10,12 @@ type Plan = {
   textColor: string;
 };
 
-const Subscriptions = () => {
-  const packages = [
+interface SubscriptionDetailsProps {
+  selectedPlan: Plan | null; // The selected plan fetched from the server
+}
+
+const SubscriptionDetails = ({ selectedPlan }: SubscriptionDetailsProps) => {
+  const packages: Plan[] = [
     {
       id: 1,
       name: "Basic",
@@ -56,27 +56,16 @@ const Subscriptions = () => {
     },
   ];
 
-  const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
-
-  const handlePurchase = (plan: Plan) => {
-    setSelectedPlan(plan);
-    alert(
-      `You have selected the ${plan.name} package OR ${
-        selectedPlan ? selectedPlan.name : "no plan selected"
-      }!`
-    );
-  };
-
   return (
-    <div className="max-w-6xl mx-auto p-8 relative">
-      <h1 className="text-4xl font-bold text-center text-black mb-8">
-        Choose Your Plan
-      </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+    <div className="mt-8">
+      <h2 className="text-2xl font-bold text-gray-800 mb-6">Subscription Details</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {packages.map((plan) => (
           <div
             key={plan.id}
-            className={`relative border border-white/20 rounded-xl shadow-xl backdrop-blur-lg ${plan.bgColor} hover:shadow-2xl transition-transform duration-300 hover:scale-105 flex flex-col overflow-hidden`}
+            className={`relative border border-white/20 rounded-xl shadow-xl backdrop-blur-lg ${plan.bgColor} ${
+              selectedPlan?.id === plan.id ? "ring-2 ring-blue-500" : "opacity-50"
+            } transition-all`}
           >
             {plan.ribbon && (
               <div className="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
@@ -84,9 +73,7 @@ const Subscriptions = () => {
               </div>
             )}
             <div className="p-6 flex-grow">
-              <h2
-                className={`text-2xl font-bold ${plan.textColor} text-center`}
-              >
+              <h2 className={`text-2xl font-bold ${plan.textColor} text-center`}>
                 {plan.name}
               </h2>
               <p className="text-center text-xl font-semibold text-blue-300 mt-2">
@@ -105,8 +92,15 @@ const Subscriptions = () => {
               </div>
             </div>
             <div className="p-6 border-t border-white/20 mt-auto">
-              <button className="button" onClick={() => handlePurchase(plan)}>
-                Purchase
+              <button
+                className={`w-full px-4 py-2 rounded-lg ${
+                  selectedPlan?.id === plan.id
+                    ? "bg-blue-600 text-white cursor-default"
+                    : "bg-white/70 text-gray-800 cursor-not-allowed"
+                }`}
+                disabled
+              >
+                {selectedPlan?.id === plan.id ? "Current Plan" : "Select Plan"}
               </button>
             </div>
           </div>
@@ -116,4 +110,4 @@ const Subscriptions = () => {
   );
 };
 
-export default Subscriptions;
+export default SubscriptionDetails;
