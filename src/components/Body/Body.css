@@ -1,0 +1,62 @@
+/* Body Part CSS */
+.searchButton {
+  background: linear-gradient(to right, #000000, #434343);
+}
+
+.searchButton:hover {
+  background: linear-gradient(to right, #2BA5FF, #53E6F1);
+  transition: ease-in-out 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.searchButton:active {
+  transform: scale(0.90); /* Ensure the centering is retained */
+}
+
+/* Gradient background for the OK button */
+.ok-button {
+  background: linear-gradient(to right, #000000, #434343);
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  font-weight: bold;
+}
+
+.ok-button:hover {
+  background: linear-gradient(to right, #2BA5FF, #53E6F1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Outer Container */
+.map-modal-outer {
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 700px;
+  width: 90%;
+  max-height: 80vh;
+  overflow: auto;
+  position: relative;
+  top: 20px;
+}
+
+/* Inner Map Container */
+.map-modal-inner {
+  border-radius: 10px;
+  overflow: hidden;
+  height: 500px; /* Ensure the map has a defined height */
+  width: 100%;
+}
+
+.google-map-container {
+  height: 100%;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .searchButton {
+    width: 100%;
+  }
+}
